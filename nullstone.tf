@@ -10,7 +10,7 @@ data "ns_workspace" "this" {}
 
 data "ns_connection" "s3_bucket" {
   name = "s3_bucket"
-  type = "aws-s3-bucket"
+  type = "bucket/aws-s3"
 }
 
 locals {

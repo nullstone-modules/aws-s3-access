@@ -1,17 +1,19 @@
-resource "aws_iam_role_policy" "access_" {
-  role   = var.app_metadata.role_name
-  policy = data.aws_iam_policy_document.access.json
+resource "aws_iam_policy" "this" {
+  name = local.resource_name
+  policy = data.aws_iam_policy_document.this.json
 }
 
-data "aws_iam_policy_document" "access" {
+resource "aws_iam_role_policy_attachment" "this" {
+  role = var.app_metadata["role_name"]
+  policy_arn = aws_iam_policy.this.arn
+}
+
+data "aws_iam_policy_document" "this" {
   statement {
     sid     = "AllowFullAccess"
     effect  = "Allow"
     actions = ["s3:*"]
 
-    principals {
-      identifiers = [local.s3_bucket_arn, "${local.s3_bucket_arn}/*"]
-      type        = "AWS"
-    }
+    resources = [local.s3_bucket_arn, "${local.s3_bucket_arn}/*"]
   }
 }
