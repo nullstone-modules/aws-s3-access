@@ -1,5 +1,5 @@
 resource "aws_iam_role_policy" "access_" {
-  role   = var.app_metadata.task_role_name
+  role   = var.app_metadata.role_name
   policy = data.aws_iam_policy_document.access.json
 }
 
