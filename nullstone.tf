@@ -14,7 +14,8 @@ data "ns_connection" "s3_bucket" {
 }
 
 locals {
-  s3_region      = data.ns_connection.s3_bucket.outputs.region
-  s3_bucket_arn  = data.ns_connection.s3_bucket.outputs.bucket_arn
-  s3_bucket_name = data.ns_connection.s3_bucket.outputs.bucket_name
+  s3_db_arn      = data.ns_connection.s3_bucket.outputs.db_arn
+  s3_db_protocol = data.ns_connection.s3_bucket.outputs.db_protocol
+  s3_db_hostname = data.ns_connection.s3_bucket.outputs.db_hostname
+  s3_db_port     = data.ns_connection.s3_bucket.outputs.db_port
 }

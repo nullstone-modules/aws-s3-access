@@ -1,8 +1,8 @@
-output "secrets" {
+output "env" {
   value = [
     {
       name  = "S3_BUCKET_NAME"
-      value = local.s3_bucket_name
+      value = local.s3_db_hostname
     }
   ]
 }

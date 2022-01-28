@@ -1,10 +1,10 @@
 resource "aws_iam_policy" "this" {
-  name = local.resource_name
+  name   = local.resource_name
   policy = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_iam_role_policy_attachment" "this" {
-  role = var.app_metadata["role_name"]
+  role       = var.app_metadata["role_name"]
   policy_arn = aws_iam_policy.this.arn
 }
 
