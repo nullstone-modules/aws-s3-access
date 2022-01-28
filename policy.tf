@@ -14,6 +14,6 @@ data "aws_iam_policy_document" "this" {
     effect  = "Allow"
     actions = ["s3:*"]
 
-    resources = [local.s3_bucket_arn, "${local.s3_bucket_arn}/*"]
+    resources = [local.s3_db_arn, "${local.s3_db_arn}/*"]
   }
 }
