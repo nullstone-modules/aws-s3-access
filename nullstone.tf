@@ -8,14 +8,17 @@ terraform {
 
 data "ns_workspace" "this" {}
 
-data "ns_connection" "s3_bucket" {
-  name = "s3_bucket"
-  type = "bucket/aws-s3"
+// Generate a random suffix to ensure uniqueness of resources
+resource "random_string" "resource_suffix" {
+  length  = 5
+  lower   = true
+  upper   = false
+  numeric = false
+  special = false
 }
 
 locals {
-  s3_db_arn      = data.ns_connection.s3_bucket.outputs.db_arn
-  s3_db_protocol = data.ns_connection.s3_bucket.outputs.db_protocol
-  s3_db_hostname = data.ns_connection.s3_bucket.outputs.db_hostname
-  s3_db_port     = data.ns_connection.s3_bucket.outputs.db_port
+  tags          = data.ns_workspace.this.tags
+  block_name    = data.ns_workspace.this.block_name
+  resource_name = "${data.ns_workspace.this.block_ref}-${random_string.resource_suffix.result}"
 }

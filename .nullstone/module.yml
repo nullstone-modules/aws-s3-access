@@ -1,0 +1,15 @@
+org_name: nullstone
+name: aws-s3-access
+friendly_name: S3 Access
+description: Grants an application access to an S3 bucket.
+category: capability
+subcategory: datastores
+provider_types:
+    - aws
+platform: s3
+subplatform: ""
+type: ""
+appCategories:
+    - container
+    - serverless
+is_public: true
