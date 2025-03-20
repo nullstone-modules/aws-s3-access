@@ -9,4 +9,5 @@ locals {
   s3_db_protocol = data.ns_connection.s3_bucket.outputs.db_protocol
   s3_db_hostname = data.ns_connection.s3_bucket.outputs.db_hostname
   s3_db_port     = data.ns_connection.s3_bucket.outputs.db_port
+  s3_db_region   = try(data.ns_connection.s3_bucket.outputs.db_region, data.aws_region.this.name)
 }

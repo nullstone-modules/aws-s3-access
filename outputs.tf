@@ -5,8 +5,16 @@ output "env" {
       value = local.s3_db_hostname
     },
     {
+      name  = "S3_BUCKET_ARN",
+      value = local.s3_db_arn
+    },
+    {
       name  = "S3_URL"
-      value = "https://${local.s3_db_protocol}.${data.aws_region.this.name}.amazonaws.com/${local.s3_db_hostname}"
+      value = local.s3_db_arn
+    },
+    {
+      name  = "S3_BUCKET_REGION",
+      value = local.s3_db_region
     }
   ]
 }
